@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li><a href="#requests" aria-controls="requests" role="tab" data-toggle="tab">Заявки</a></li>
+        <li><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Аккаунты</a></li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="requests">
+        @Html.Partial("AccauntRequests", ViewData["Requests"])
+    </div>
+    <div role="tabpanel" class="tab-pane" id="users">
+        @Html.Partial("UserView", ViewData["Users"])
+    </div>
+</div>
+</div>

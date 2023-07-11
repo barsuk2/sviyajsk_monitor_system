@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@model List<Analyze>
+<table border="1" >
+    <tr>
+        <th>ОКН</th>
+        <th>Элемент</th>
+        <th>Элемент декора</th>
+        <th>Элеемнт конструкции</th>
+        <th>Дата взятия</th>
+        <th>Исследователь</th>
+        <th>Организация</th>
+        <th>Тип исследования</th>
+        <th>Дата анализа</th>
+        <th>Исследователь</th>
+        <th>Сектор</th>
+        <th>Цвет</th>
+        @foreach (ChemistryElement ch in ViewBag.ChElements)
+        {
+            <th>@ch.shortname</th>
+
+        }
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (item.point.culcherObject != null)
+            {
+            <td>@item.point.culcherObject.name</td>
+            }
+            else
+            {
+                <td>НЕТ</td>
+
+            }
+            <td>@item.point.element.name</td>
+            @if (item.point.decoreElement != null)
+            {
+                <td>@item.point.decoreElement.name</td>
+            }
+            else
+            {
+        <td>NULL</td>}
+            @if (item.point.buildingElement != null)
+            {
+                <td>@item.point.buildingElement.name</td>
+            }
+            else
+            {
+                <td>NULL</td>}
+            <td>@item.point.dateofget.ToString()</td>
+            <td>@item.point.person.ToString()</td>
+            <td>@item.point.storage.name</td>
+            <td>@item.GetTypeName()</td>
+            <td>@item.date.ToString()</td>
+            <td>@item.person.ToString()</td>
+            @switch (@item.type)
+            {
+                case AnalyzeType.MicroBiologicalAnalyzes:
+                    break;
+                case AnalyzeType.rentgenfluoriscentnyi:
+                    {
+                        var rf = item as RentgenFluoriscAnalyze;
+                        <td>НЕТ</td>
+                        <td>@rf.color.ToString()</td>
+                        @foreach (ChemistryElement ch in ViewBag.ChElements)
+                        {
+                            var dole = rf.massdoles.FirstOrDefault(d => d.chelement.id == ch.id);
+                            if (dole != null)
+                            {
+                                <td>@dole.value</td>
+
+                            }
+                            else
+                            {
+                                <td>-</td> }
+
+                        }
+
+                    }
+                    break;
+                case AnalyzeType.electronnayamicroscopiya:
+                    break;
+                case AnalyzeType.DendroChronologicalAnalyzes:
+                    break;
+                default:
+                    break;
+            }
+        </tr>
+
+    }
+</table>

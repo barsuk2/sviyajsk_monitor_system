@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model TreeRoot
+<div id="Tree">
+
+</div>
+
+
+<form id="CreateElForm" asp-action="CreateEl" asp-controller="TreeElement">
+    <div class="form-group">
+        <label>Идентификатор элемента дерева</label>
+        <input id="indentifier" name="indentifier" type="text" />
+    </div>
+    @foreach (var item in Model.treetype.keys)
+    {
+        <div class="form-group">
+            <label>@item.name</label>
+            @switch (item.type)
+            {
+                case AttributeTypes.Choosable:
+                    <select class="DynamicField" id="@item.name" name="@item.name">
+                        @foreach (var opt in (IEnumerable<EntityValue>)ViewData[item.entitytype.Name])
+                        {
+                            <option value="@opt.id">@opt.value</option>
+
+                        }
+                    </select>
+                                break;
+
+                case AttributeTypes.photo:
+                    <input class="DynamicField" id="@item.id" name="@item.name" type="file" multiple=""/>
+                                break;
+                default:
+                <input class="DynamicField" id="@item.id" name="@item.name" type="@item.gettype()" />
+                                break;
+            }
+            
+           
+        </div>
+
+    }
+    <input type="hidden" name="elementid" id="elementid" />
+    <input type="hidden" id="Treeid" name="Treeid" value="@Model.id" />
+    <input type="submit" value="Создать элемент"  />
+</form>
+<form id="getelinfo" asp-action="GetElementInfo" asp-controller="TreeElement">
+    <input type="hidden" name="elemid" id="elemid" />
+</form>
+<div id="info">
+
+</div>
+
+@section scripts{
+    <script src="~/js/EditTreeJs.js"></script>
+}

@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div style="    margin: 1em;">
+    <paging>
+       
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <tr>
+                    <th>Материальный объект</th>
+                    <th>Коды образцов</th>
+                    <th>Показать на 3D</th>
+                    <th>Выбрать</th>
+                </tr>
+                <tr *ngFor="let op of currentelements">
+                    <th>{{op.elementpath}}</th>
+                    <th>{{op.samplecodes}}</th>
+                    <th><button class="btn btn-default">Показать на 3D</button></th>
+                    <th><button class="btn btn-default "  id="{{GenerateButtonId(op.pointid)}}" (click)="ChoosePlace(op.pointid)" >Выбрать</button></th>
+                </tr>
+            </table>
+        
+    </paging>
+</div>

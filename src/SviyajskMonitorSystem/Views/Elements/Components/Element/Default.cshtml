@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+ 
+}
+
+@model IEnumerable<Element>
+
+@foreach (var item in Model)
+{
+    <button data-toggle="collapse" data-target="#@item.id">@item.name</button>
+    <div class="well collapse" id="@item.id">
+        @await Component.InvokeAsync("Element",new { elid = item.id })
+    </div>
+
+}
+<form id="newel" asp-action="CreateEl" asp-controller="Elements">
+    <input type="hidden" value="@ViewBag.PID" id="parentid" name="parentid" />
+    @if (ViewBag.PID < 0) {
+
+        @Html.Partial("ChooseCulcherObject")
+       
+    }
+    <input id="elname" name="elname" type="text" />
+    <input type="submit" value="+" />
+</form>

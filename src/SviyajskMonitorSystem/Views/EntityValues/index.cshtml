@@ -1,0 +1,42 @@
+﻿@model EntityType
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@Model.Name</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>Значение</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="valuetable">
+@foreach (var item in Model.values) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.value)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<form>
+    <input type="hidden" id="typeid" name="typeid" value="@Model.Id"/>
+    <label>значение</label>
+    <input type="text" id="value" name="value" />
+    <input type="button" value="Добавить"  onclick="addvalue()"/>
+</form>
+
+@section scripts{
+    <script src="~/js/jquery-2.2.0.min.js"></script>
+    <script src="~/js/jquery.signalr-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="~/js/EntityValueJs.js"></script>
+}

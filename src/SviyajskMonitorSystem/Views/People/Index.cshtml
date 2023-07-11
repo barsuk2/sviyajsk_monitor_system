@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SviyajskMonitorSystem.Models.Person>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="main-content" style="    text-align: -webkit-center;">
+<p>
+ <div class="button-container" >
+    <a asp-action="Create"
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    <span>Добавить</span>
+    </a>
+  </div>
+
+
+</p>
+
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <thead>
+     <tr>
+                <th>
+                    Имя
+                </th>
+                <th>
+                    Фамилия
+                </th>
+                <th></th>
+            </tr>
+  </thead>
+     <tbody>
+  @foreach (var item in Model) {
+          <tr>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Name)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Surname)
+              </td>
+              <td>
+
+                  <a asp-action="Delete" style="color:#3F51B5" asp-route-id="@item.Id">Удалить</a>
+              </td>
+          </tr>
+  }
+      </tbody>
+</table>
+</div>
+

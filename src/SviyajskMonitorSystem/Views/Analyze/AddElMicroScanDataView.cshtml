@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <div *ngFor="let region of regions let i=index">
+       <h3 *ngIf="currentregion==i" class="text-success">Участок {{i+1}}</h3> 
+        <h3 *ngIf="currentregion!=i">Участок {{i+1}}</h3> 
+        <table border="1" *ngIf="region.sectors.length>0">
+            <tr>
+                <th>Цвет</th>
+                <th *ngFor="let el of chelements let i=index" >{{el.shortname}}</th>
+            </tr>
+            <tr *ngFor="let sector of region.sectors" >
+                <td>{{sector.color.name}}</td>
+                <td *ngFor="let md of sector.Massdoles">{{md.value|number}}</td>
+                <td><button class="btn-default">Удалить</button></td>
+            </tr>
+        </table>
+        <button class="btn btn-default" (click)="ChangeCurrentRegion(i)">Редактировать</button>
+    </div>
+    <hr />
+    <button class="btn btn-default" (click)="AddNewRegion()">Добавить участок</button>
+    <hr />
+    <div  *ngIf="currentregion!=undefined">
+        <form class="form-horizontal" [formGroup]="mdForm">
+            <div class="form-group form-inline">
+                <label>Цвет или материал</label>
+                <select  name="color" formControlName="color">
+                    <option *ngFor="let color of colors" value="{{color.id}}">{{color.name}}</option>
+                </select>
+            </div>
+            <div formArrayName="massdole">
+                <div class="form-group form-inline" *ngFor="let fc of mdForm.controls['massdole'].controls let i=index">
+                    <label>{{chelements[i].shortname}}:</label>
+                    <input class="form-control" formControlName="{{i}}" type="number" />
+                </div>
+            </div>
+            <button class="btn btn-info" (click)="AddSector()">Добавить сектор</button>
+        </form>
+    </div>
+    <div *ngIf="currentregion==undefined">
+        <h5>Добавьте участок</h5>
+    </div>
+    <hr />
+<div>
+    <button class="btn btn-default" (click)="SendData()" >Отправить данные</button>
+</div>
+</div>

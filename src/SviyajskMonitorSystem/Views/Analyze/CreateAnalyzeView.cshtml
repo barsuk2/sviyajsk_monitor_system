@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div>
+    <h3>Исследование</h3>
+    <form>
+        <div class="form-group">
+            <label>Код исследования</label>
+            <input type="text" [(ngModel)]="analyze.shifr" name="shifr" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Дата исследования</label>
+            <input type="date" [(ngModel)]="analyze.date" name="date" class="form-control" />
+        </div>
+        <div class="form-group" >
+            <label>Исследователь</label>
+            <select [(ngModel)]="analyze.personid" name="persons" >
+                <option *ngFor="let person of persons"  value="{{person.id}}">{{person.surname}} {{person.name}}</option>
+            </select>
+        </div>
+        <div class="form-group" >
+            <label>Тип исследования</label>
+            <select [(ngModel)]="analyze.type" name="type" >
+                <option value="0" *ngIf="physical"  >Микробиологический</option>
+                <option value="2" *ngIf="physical"  >Сканирующая электронная микроскопия</option>
+                <option value="1" *ngIf="!physical"  >рентгено-фазовый</option>
+                <option value="3" *ngIf="physical" >Дендрологический</option>
+            </select>
+        </div>
+    </form>
+       
+    <div>
+        <button class="btn btn-default" (click)="SendAnalyze()" >Далее</button>
+    </div>
+</div>

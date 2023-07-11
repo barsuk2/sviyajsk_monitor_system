@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es6",
+    "types": [ "jquery", "jstree", "bootstrap", "filesystem" ]
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "D:\\CODE\\SviyajskMonitorSystem\\src\\SviyajskMonitorSystem\\node_modules",
+    "node_modules",
+    "C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\2.4"
+  ]
+}

@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div >
+    <div id="treelements" >
+
+    </div>
+    <button class="btn btn-default" (click)="RemoveTreeEleemnt()" >Удалить</button>
+    <div >
+        <form [formGroup]="ElementForm"  >
+            <div>
+            <md-form-field >
+                                              <input mdInput
+                                              type="text"
+                                              formControlName="identifier"
+                                              placeholder="Название элемента"
+                                              />
+                                             </md-form-field>
+                <hr />
+            </div>
+            <h3>Свойства:</h3>
+            <div *ngFor="let key of treetype.keys" >
+                <div [ngSwitch]="key.type" >
+                    <ng-template [ngSwitchCase]="0">
+                        <label>{{key.name}}</label>
+                        <input type="number" formControlName="{{key.name}}"  />
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="1" >
+                        <label>{{key.name}}</label>
+                        <input type="number" formControlName="{{key.name}}" />
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="2" >
+                        <label>{{key.name}}</label>
+                        <input type="text" formControlName="{{key.name}}" />
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="3">
+                        <label>{{key.name}}</label>
+                        <select formControlName="{{key.name}}" *ngIf="entityValues.HasElement(key.name)" >
+                            <option *ngFor="let val of entityValues.GetElement(key.name)" value="{{val.id}}" >{{val.value}}</option>
+                        </select>
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="4" >
+                        <input type="hidden" formControlName="{{key.name}}" />
+                    </ng-template>
+                    <ng-template [ngSwitchCase]="5">
+                        <input type="hidden" formControlName="{{key.name}}"/>
+                    </ng-template>
+                </div>
+            </div>
+             <button (click)="CreateTreeElement()"
+                                      color="primary"
+                                      md-raised-button>Создать элемент</button>
+        </form>
+    </div>
+    <image *ngIf="hasimage"  (OnImagesSetted)="setImages($event)" >
+    </image>
+    <elements *ngIf="haselement"  (OnElementsSetted)="SetEleemnts($event)" >
+    </elements>
+</div>

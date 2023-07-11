@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - TestWebForms</title>
+        @RenderSection("Style", required: false)
+        <environment names="Development">
+            <link rel="stylesheet" href="~/lib/jstree/dist/themes/default/style.css" />
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" />
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            <!--getmdl-select-->
+            <link rel="stylesheet" href="path_to/getmdl-select/getmdl-select.min.css">
+            <script defer src="path_to/getmdl-select/getmdl-select.min.js"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="~/lib/jstree/dist/themes/default/style.css" />
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+    </head>
+    <body >
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-controller="Analyze" asp-action="Index">Пробы</a></li>
+                        <li><a asp-controller="ResearchFilters" asp-action="Index">Исследования</a></li>
+                            <li><a asp-controller="DifficultFilters" asp-action="Index">Выборки</a></li>
+                        <li><a asp-controller="Home" asp-action="Bibliogr">Библиографические источники</a></li>
+                        <li><a asp-controller="Admin" asp-action="Index">Администрирование</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Справочники<b class=«caret»></b></a>
+                            <ul class="dropdown-menu">
+                                @*<li><a asp-controller="Trees" asp-action="Index">Trees</a></li>*@
+                                @*<li><a asp-action="Index" asp-controller="Bacteryas">Bacteryas</a></li>*@
+                                <li><a asp-action="Index" asp-controller="People">Исследователи</a></li>
+                                <li><a asp-action="Index" asp-controller="Colors">Цвета</a></li>
+                                <li><a asp-action="Index" asp-controller="Elements">Материальные объекты</a></li>
+                                <li><a asp-action="Index" asp-controller="ChemistryElements">Химические элементы</a></li>
+                                <li><a asp-action="Index" asp-controller="Storages">Места хранения</a></li>
+                                <li><a asp-action="Index" asp-controller="Organizations">Организации</a></li>
+                                <li><a asp-action="Index" asp-controller="TreeTypes" >Типы дерева</a></li>
+                                <li><a asp-action="Index" asp-controller="EntityTypes" >Справочники для деревьев</a></li>
+                                <li><a asp-action="Index" asp-controller="TreesElements" >Разбиение материальных объектов</a></li>
+                            </ul>
+                            
+                        </li>
+			<li>
+			@await Html.PartialAsync("_LoginPartial")
+			</li>
+                    </ul>
+                 
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+
+        </div>
+
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="~/lib/jstree/dist/jstree.js"></script>
+            <script src="~/lib/jquery-form/jquery.form.js"></script>
+            <script src="~/lib/jquery-validation/src/core.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+            <script src="~/node_modules/signalr/jquery.signalR.js"></script>
+          
+        </environment>
+        <environment names="Staging,Production">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="~/lib/jstree/dist/jstree.js"></script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="~/lib/jquery-form/jquery.form.js"></script>
+            <script src="~/lib/jquery-validation/src/core.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive-3.2.6/jquery.validate.unobtrusive.js"></script>
+            <script src="~/node_modules/signalr/jquery.signalR.js"></script>
+        </environment>
+
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

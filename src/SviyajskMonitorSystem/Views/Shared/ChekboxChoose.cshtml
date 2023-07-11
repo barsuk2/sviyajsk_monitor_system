@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<IChoosable>
+<div  id="@Model[0].getlistname()" name="@Model[0].getlistname()">
+    @foreach (var item in Model)
+    {
+        <div>
+            <input type="checkbox" id="@item.getid()" name="@item.getid()" /><label for="@item.getid()">@item.getvalue()</label>
+        </div>
+
+    }
+</div>

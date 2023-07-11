@@ -1,0 +1,40 @@
+﻿@model SviyajskMonitorSystem.Models.Color
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="main-content" style="    text-align: -webkit-center;">
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Цвет</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input asp-for="name" class="mdl-textfield__input" asp-for="Name" type="text" >
+            <label asp-validation-for="name" asp-validation-for="Name" class="mdl-textfield__label" for="sample3">Цвет</label>
+          </div>
+        </div>
+
+
+        <div class="">
+            <div class="">
+                  <button
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                type="submit">Добавить</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div style="    margin-top: 10px;"  >
+    <a asp-action="Index" style="color:#3F51B5;">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</div>

@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model RentgenFluoriscAnalyze
+
+
+
+<td>НЕТ</td>
+<td>@Model.color.ToString()</td>
+@foreach (ChemistryElement ch in ViewBag.ChElements)
+{
+    var dole = Model.massdoles.FirstOrDefault(d => d.chelement.id == ch.id);
+    if (dole != null)
+    {
+        <td>@dole.value</td>
+
+    }else {<td>-</td> }
+
+}

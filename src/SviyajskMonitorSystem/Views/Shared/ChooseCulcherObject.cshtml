@@ -1,0 +1,12 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<select id="culobj" name="culobj">
+    @foreach(var item in ViewBag.CulObj)
+    {
+        <option value="@item.id">@item.name</option>
+
+    }
+</select>

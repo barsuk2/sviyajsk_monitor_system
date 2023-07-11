@@ -1,0 +1,308 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <div>
+        <md-checkbox color="primary"
+                     [(ngModel)]="place.needpoint">
+        need point
+        </md-checkbox>
+    </div>
+    <div *ngIf="place.needpoint" >
+        <h1>Unity Imitation</h1>
+        
+        <div class="form-group">
+            <h1>Posttion</h1>
+            <form #position="ngForm">
+            <md-list>
+                <md-list-item>
+                 <md-form-field>
+                    <input mdInput placeholder="x"
+                    name="pos-x"
+                    [(ngModel)]="place.pos.x">
+                  </md-form-field>
+                </md-list-item>
+                <md-list-item>
+                  <md-form-field>
+                    <input mdInput placeholder="y"
+                    name="pos-y"
+                    [(ngModel)]="place.pos.y">
+                  </md-form-field>
+                </md-list-item>
+                <md-list-item>
+                  <md-form-field>
+                    <input mdInput placeholder="z"
+                    name="pos-z"
+                    [(ngModel)]="place.pos.z">
+                  </md-form-field>
+                </md-list-item>
+            </md-list>
+            </form>
+        </div>
+        <div>
+            <h1>direction</h1>
+            <form #direction="ngForm">
+            <md-list>
+               <md-list-item>
+                <md-input-container>
+                  <input mdInput
+                  placeholder="x"
+                  name="dir-x"
+                  [(ngModel)]="place.dir.x">
+                </md-input-container>
+               </md-list-item>
+               <md-list-item>
+                <md-input-container>
+                  <input mdInput
+                  placeholder="y"
+                  [(ngModel)]="place.dir.y"
+                  name="dir-y">
+                </md-input-container>
+                </md-list-item>
+                <md-list-item>
+               <md-input-container>
+                  <input mdInput
+                  placeholder="z"
+                  [(ngModel)]="place.dir.z"
+                  name="dir-z">
+                </md-input-container>
+                </md-list-item>
+            </md-list>
+            </form>
+        </div>
+        
+    </div>
+    <br />
+    <md-tab-group>
+      <md-tab
+             (click)="ChangeMethod(0)"
+             label="Новое место">
+       <div>
+                      <div id="jstree">
+                      </div>
+                      <div>
+                      <div class="form-group">
+                      </div>
+                          <div class="form-group" style="margin-left: 1em;">
+                            <md-checkbox
+                            [(ngModel)]="place.needcords"
+                            name="needcords"
+                            color="primary">
+                            Указывать геокоординаты?</md-checkbox>
+                          </div>
+                          <form *ngIf="place.needcords">
+                            <md-list>
+                              <md-list-item>
+                                  <md-form-field>
+                                      <input mdInput
+                                      type="number"
+                                      placeholder="Широта"
+                                      name="geocords-x"
+                                      [(ngModel)]="place.geocords.x">
+                                  </md-form-field>
+                              </md-list-item>
+                              <md-list-item>
+                                  <md-form-field>
+                                       <input mdInput
+                                       type="number"
+                                       placeholder="Долгота"
+                                       name="geocords-y"
+                                       [(ngModel)]="place.geocords.y">
+                                   </md-form-field>
+                              </md-list-item>
+                              <md-list-item>
+                                  <md-form-field>
+                                      <input mdInput
+                                      type="number"
+                                      placeholder="Высота"
+                                      name="geocords-z"
+                                      [(ngModel)]="place.geocords.z">
+                                  </md-form-field>
+                              </md-list-item>
+                             </md-list>
+
+                          </form>
+                      </div>
+                      <image style=" display: block;   margin-left: 1em;" (OnImagesSetted)="OnImageSended()" >
+
+                      </image>
+                      <form #Place="ngForm" style="    margin-top: -2em;">
+
+                          <br />
+                          <div class="form-group">
+                          <md-form-field style="    margin-left: 1em;">
+                             <textarea mdInput
+                               placeholder="Описание"
+                               name="placedescription"
+                               [(ngModel)]="place.placedescription">
+                               </textarea>
+                          </md-form-field>
+                          </div>
+                          <div class="form-group">
+                              <md-checkbox [(ngModel)]="place.sample.physical"
+                                            name="sample-physical"
+                                            style="    margin-left: 1em;"
+                                           color="primary">
+                                           Физическое изъятие?
+                              </md-checkbox>
+                          </div>
+
+                          <div *ngIf="place.sample.physical">
+                            <md-list>
+                             <md-list-item style="margin-bottom: 10px;">
+                                 <md-form-field style="width: 200px">
+                                   <input mdInput
+                                   type="text"
+                                   placeholder="Шифр"
+                                   [(ngModel)]="place.sample.Shifr"
+                                   name="shifr"/>
+                                  </md-form-field>
+                             </md-list-item>
+
+                              <md-list-item>
+                                <md-form-field style="width: 200px">
+                                  <input mdInput
+                                  type="date"
+                                  placeholder="Дата изъятия"
+                                  [(ngModel)]="place.sample.date"
+                                   name="date"/>
+                                 </md-form-field>
+                              </md-list-item>
+
+                              <md-list-item>
+                                <md-select placeholder="Исследователь"
+                                style="width: 200px"
+                                [(ngModel)]="place.sample.personid"
+                                name="person">
+                                  <md-option *ngFor="let person of persons"
+                                  [value]="person.id">
+                                    {{person.surname}} {{person.name}}
+                                  </md-option>
+                                </md-select>
+                                   <md-icon color="primary">add</md-icon>
+                              </md-list-item>
+                              <md-list-item>
+                                  <md-select placeholder="Организация"
+                                  style="width: 200px"
+                                  [(ngModel)]="currentorgid"
+                                  name="org"
+                                  (change)="ChangeOrg()">
+                                     <md-option *ngFor="let org of organizations"
+                                     [value]="org.id">
+                                         {{org.name}}
+                                     </md-option>
+                                  </md-select>
+                              </md-list-item>
+                              <md-list-item>
+                                  <md-select placeholder="Место хранения"
+                                  style="width: 200px"
+                                  [(ngModel)]="place.sample.storageid"
+                                  name="storage">
+                                    <md-option *ngFor="let storage of storages"
+                                    [value]="storage.id">
+                                         {{storage.place}}
+                                    </md-option>
+                                  </md-select>
+                              </md-list-item>
+                          </md-list>
+                        </div>
+                      </form>
+                      <div style="width: 100%;    display: flex;
+                                                  justify-content: center;">
+                          <button (click)="SendPlace()"
+                          color="primary"
+                          md-raised-button>Отправить</button>
+                      </div>
+                  </div>
+      </md-tab>
+      <md-tab
+              (click)="ChangeMethod(1)"
+              label="Существующее место">
+       <oldp (OnPlaceSetted)="OnPlaceSetted($event)"></oldp>
+                  <form #nsample="ngForm" >
+
+                      <div class="form-group">
+                       <md-checkbox [(ngModel)]="sample.physical"
+                                                                  name="sample-physical"
+                                                                  style="    margin-left: 1em;"
+                                                                 color="primary">
+                                                                 Физическое изъятие?
+                                                    </md-checkbox>
+                          </div>
+
+                      <div *ngIf="sample.physical" style="    margin-bottom: 2em;">
+                      <md-list>
+                                                   <md-list-item style="margin-bottom: 10px;">
+                                                       <md-form-field style="width: 200px">
+                                                         <input mdInput
+                                                         type="text"
+                                                         placeholder="Шифр"
+                                                         [(ngModel)]="sample.shifr"
+                                                         name="shifr"/>
+                                                        </md-form-field>
+                                                   </md-list-item>
+
+                                                    <md-list-item>
+                                                      <md-form-field style="width: 200px">
+                                                        <input mdInput
+                                                        type="date"
+                                                        placeholder="Дата изъятия"
+                                                        [(ngModel)]="sample.date"
+                                                         name="date"/>
+                                                       </md-form-field>
+                                                    </md-list-item>
+
+                                                    <md-list-item>
+                                                      <md-select placeholder="Исследователь"
+                                                      style="width: 200px"
+                                                      [(ngModel)]="sample.personid"
+                                                      name="person">
+                                                        <md-option *ngFor="let person of persons"
+                                                        [value]="person.id">
+                                                          {{person.surname}} {{person.name}}
+                                                        </md-option>
+                                                      </md-select>
+
+                                                    </md-list-item>
+                                                    <md-list-item>
+                                                        <md-select placeholder="Организация"
+                                                        style="width: 200px"
+                                                        [(ngModel)]="currentorgid"
+                                                        name="org"
+                                                        (change)="ChangeOrg()">
+                                                           <md-option *ngFor="let org of organizations"
+                                                           [value]="org.id">
+                                                               {{org.name}}
+                                                           </md-option>
+                                                        </md-select>
+                                                    </md-list-item>
+                                                    <md-list-item>
+                                                        <md-select placeholder="Место хранения"
+                                                        style="width: 200px"
+                                                        [(ngModel)]="sample.storageid"
+                                                        name="storage">
+                                                          <md-option *ngFor="let storage of storages"
+                                                          [value]="storage.id">
+                                                               {{storage.place}}
+                                                          </md-option>
+                                                        </md-select>
+                                                    </md-list-item>
+                                                </md-list>
+                                                </div>
+                  </form>
+                  <div style="width: 100%;    display: flex;
+                                                                    justify-content: center;">
+                  <button md-raised-button
+                   (click)="SetOldPlace()"
+                    color="primary">Отправить</button>
+                    </div>
+      </md-tab>
+       <md-tab
+       (click)="ChangeMethod(2)"
+       label="Существующий образец">
+                   <olds (OnSampleSetted)="OnSampleSetted($event)" ></olds>
+       </md-tab>
+    </md-tab-group>
+</div>

@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div >
+    <hr />
+    <div id="imagescontainer" class="col-md-12" >
+        <div *ngFor="let url of ImagesUrls; let i=index" class="col-md-3">
+            <button (click)="DeleteImage(i)" class="btn btn-default btn-block"><i class="glyphicon glyphicon-remove"></i></button>
+            <img  id="{{GenerateId(i)}}" src="{{url}}" class="img-responsive">
+            <img />
+        </div>
+    </div>
+    <button (click)="ClickFile()" md-raised-button >Загрузить фото</button>
+    <input id="fileinput" class="file_upload" type="file" (change)="OnImageAdded($event)" multiple /> 
+    <hr />
+</div>

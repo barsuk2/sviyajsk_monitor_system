@@ -1,0 +1,69 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"].</h2>
+
+<form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
+    <h4>Create a new account.</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="name" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="name" class="form-control" />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="surname" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="surname" class="form-control" />
+            <span asp-validation-for="surname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="post" name="post">
+            <option value="@Post.Laborant">Laborant</option>
+            <option value="@Post.Researcher">Researcher</option>
+            <option value="@Post.GroupLider">Group Lider</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="direction" name="direction">
+            <option value="@AnalyzeType.MicroBiologicalAnalyzes">Micro biology</option>
+            <option value="@AnalyzeType.DendroChronologicalAnalyzes">DcL Analyze</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

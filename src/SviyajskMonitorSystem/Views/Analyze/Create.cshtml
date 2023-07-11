@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<BaseComp>
+    Loading Angular. Please wait.
+</BaseComp>
+@section Scripts{
+<script src="~/node_modules/core-js/client/shim.min.js"></script>
+<script src="~/node_modules/zone.js/dist/zone.js"></script>
+<script src="~/node_modules/reflect-metadata/Reflect.js"></script>
+<script src="~/node_modules/systemjs/dist/system.src.js"></script>
+<script src="~/typescript/Angular/Analyze/systemjs.config.js"></script>
+<script>
+        System.import('app').catch(function (err) { console.error(err); });
+</script>
+}

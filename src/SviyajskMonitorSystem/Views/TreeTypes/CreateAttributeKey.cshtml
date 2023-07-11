@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AttributeKey
+
+    <a  style="color:#3F51B5;" asp-action="Index" asp-controller="EntityTypes" >Добавить справочник</a>
+
+<form>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input required="required" asp-for="name" class="mdl-textfield__input"  type="text" >
+                    <label class="mdl-textfield__label" for="sample3">Имя атрибута</label>
+                  </div>
+
+   <div class="mdl-selectfield" style="margin-bottom: 10px;">
+             <label>Selectbox</label>
+         <select class="browser-default" id="attrtype" name="attrtype" onchange="TypeChanged()">
+        <option value="0">Целое число</option>
+        <option value="1">Вещественное число</option>
+        <option value="2">строка</option>
+        <option value="3">Справочник</option>
+        <option value="4">фотографии</option>
+        <option value="5">Материальныe объекты</option>
+         </select>
+       </div>
+
+    <div class="collapse" id="ChooseEntityTypes">
+        @Html.Partial("Choose",ViewData["ETypes"])
+    </div>
+
+     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+     onclick="addattribute()"
+     id="addAttr"
+                                        type="button">Добавить атрибут</button>
+</form>

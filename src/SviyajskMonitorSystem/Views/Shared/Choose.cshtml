@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<IChoosable>
+@if (Model.Count > 0)
+{
+  <!--  <select id="@Model[0].getlistname()" name="@Model[0].getlistname()">
+
+        @foreach (var item in Model)
+        {
+            <option value="@item.getid()">@item.getvalue()</option>
+
+        }
+    </select>-->
+
+         <div class="mdl-selectfield">
+               <label>Standard Select</label>
+               <select  style=" min-width: 300px;" id="@Model[0].getlistname()" name="@Model[0].getlistname()" class="browser-default">
+
+        @foreach (var item in Model)
+        {
+                 <option value="@item.getid()">@item.getvalue()</option>
+           }
+               </select>
+             </div>
+
+}

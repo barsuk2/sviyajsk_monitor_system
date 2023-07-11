@@ -1,0 +1,39 @@
+﻿@model SviyajskMonitorSystem.Models.CulcherObject
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="Create" asp-controller="CulcherObjects" enctype="multipart/form-data">
+    <div class="form-horizontal">
+        <h4>ОКН</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="name" class="col-md-2 control-label">Название</label>
+            <div class="col-md-10">
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Ассет Бандл (3Д модель. Создается в unity.)</label>
+            <input type="file" name="assetBundle" id="assetBundle" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Добавить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

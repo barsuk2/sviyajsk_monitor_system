@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SviyajskMonitorSystem.Models.Color>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="main-content" style="    text-align: -webkit-center;">
+
+<p>
+    <a asp-action="Create"
+    class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Создать</a>
+</p>
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
+        <tr>
+            <th>
+                Цвет
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                <a asp-action="Delete" style="color:#3F51B5;" asp-route-id="@item.id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

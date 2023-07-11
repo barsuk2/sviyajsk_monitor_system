@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    
+}
+@model Element
+<div class="main-content" style="    text-align: -webkit-center;">
+<div class="middle">
+<form id="elementform" asp-controller="Elements" asp-action="CreateEl" method="post">
+    <input type="hidden" id="parentid" name="parentid" value="-1" />
+    <div class="form-group">
+        <input asp-for="Name" class="form-control" type="text" id="elname" name="elname" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button style="    width: 110px;" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" >Добавить</button>
+</form>
+<form id="DeleteElementform" asp-controller="Elements" asp-action="DelelteEl">
+    <input type="hidden" id="elid" name="elid" value="-1" />
+    <button style="    width: 110px;
+                       margin: 10px;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">Удалить</button>
+</form>
+</div>
+
+<div id="ElTree">
+
+</div>
+<button style="margin: 10px;" class="mdl-button mdl-js-button mdl-button--raised" onclick="deselect()">Отменить выделение</button>
+</div>
+@section scripts{
+    <script src="~/js/ElementTreeJS.js"></script>
+    <script src="~/lib/jquery-form/jquery.form.js"></script>
+    }

@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<DecoreElement>
+<select id="choosedel" name="choosedel">
+    @foreach (var del in Model)
+            {
+        <option value="@del.id">@del.name</option>
+
+    }
+</select>

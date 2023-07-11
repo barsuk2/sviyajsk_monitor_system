@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    Layout = null;
+}
+@model FakeLogin
+@if (ViewData.ContainsKey("ErrorMessage"))
+{
+    <h3 class="text-danger">@ViewData["ErrorMessage"]</h3>
+
+}
+<form asp-action="FirstPage" asp-controller="Home">
+    <div>
+        <label>Логин</label>
+        <input asp-for="login"  type="text" />
+        <span asp-validation-for="login" class="text-danger"></span>
+    </div>
+    <div>
+        <label>Пароль</label>
+        <input asp-for="password" type="password" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+    <button type="submit">Войти</button>
+</form>

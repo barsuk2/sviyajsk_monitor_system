@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<EntityType>
+<div class="main-content" style="    text-align: -webkit-center;">
+
+<table id="TypeTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <tr>
+        <th>Название</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <th>@item.Name</th>
+            <th><a asp-action="Index" asp-controller="EntityValues" style="color:#3F51B5;" asp-route-id="@item.Id" >Перейти к справочнику</a></th>
+        </tr>
+
+    }
+</table>
+
+
+<h4>Добавить справочник</h4>
+<form>
+<div style="display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;">
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input  name="listname" id="listid" class="mdl-textfield__input"  type="text" >
+    <label class="mdl-textfield__label" >Название</label>
+</div>
+
+  <button onclick="AddType()"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+          type="button">Добавить</button>
+  </div>
+
+
+</div>
+</form>
+</div>
+@section scripts{
+    <script src="~/js/jquery-2.2.0.min.js"></script>
+    <script src="~/js/jquery.signalr-2.2.0.min.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script src="~/js/EntityTypesJs.js"></script>
+}
+

@@ -1,0 +1,162 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>SviyajskMonitorSystem</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>SviyajskMonitorSystem</PackageId>
+    <UserSecretsId>aspnet-SviyajskMonitorSystem-d2c0d654-c515-4fe9-b384-cb78290826b4</UserSecretsId>
+    <RuntimeIdentifiers>win10-x64;win81-x64</RuntimeIdentifiers>
+    <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
+    <ApplicationIcon />
+    <OutputTypeEx>exe</OutputTypeEx>
+    <StartupObject />
+    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="wwwroot\typescript\Angular\Analyze\ConnectionService.ts" />
+    <None Remove="wwwroot\typescript\Angular\ImagesModule.ts" />
+    <None Remove="wwwroot\typescript\Angular\ImgComp.ts" />
+    <None Remove="wwwroot\typescript\Angular\TreeModule.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\CreateTreeComponent.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\Dictionary.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\ElementsComponent.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\EntityValueComponent.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\MainComponent.ts" />
+    <None Remove="wwwroot\typescript\Angular\Trees\TreesMain.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\style.css" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\ConnectionService.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\systemjs.config.js" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\AnalyzeApp.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\AnalyzeComponent.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\AnalyzeMain.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\BaseComponent.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\DataService.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\IPaging.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\OldPlaceComponent.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\OldSampleComponent.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\Paging.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\PlaceComponent.ts" />
+    <Content Include="wwwroot\typescript\Angular\Analyze\ScanElMicro.ts" />
+    <Content Include="wwwroot\typescript\Angular\Trees\ConnectionService.ts" />
+    <Content Include="wwwroot\typescript\Angular\Trees\ImgComp.ts" />
+    <Content Include="wwwroot\typescript\Angular\Trees\systemjs.config.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\**\*;Views\**\*;Areas\**\Views">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="1.18.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.JS" Version="2.2.2" />
+    
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.0.0" />
+    
+    
+   
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Server"  CopyToOutputDirectory="true" Version="0.2.0-preview2-22683" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
+    
+    
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="ngSignalR" Version="0.0.5" />
+    <PackageReference Include="Npm" Version="3.5.2" />
+    <PackageReference Include="NuGet.CommandLine" Version="4.3.0" />
+  </ItemGroup>
+
+  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+    
+    <Exec Command="dotnet bundle" />
+  </Target>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\FiltersViewModels\" />
+    <Folder Include="RuntimeModels\" />
+    <Folder Include="Services\Filters\Filters\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Analyze\ImgComp.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\TreeModule.ts" />
+    <Content Include="wwwroot\typescript\Angular\Trees\TreesMain.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\TreeTypeComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\MainComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\ElementsComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\CreateTreeComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\typescript\Angular\Trees\EntityValueComponent.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\typescript\Angular\Trees\Dictionary.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\timmi\.nuget\packages\aspnetcore-angular2-base\1.0.3\contentFiles\any\any\package.json" Link="wwwroot\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="C:\Users\timmi\.nuget\packages\aspnetcore-angular2-base\1.0.3\contentFiles\any\any\typings.json" Link="wwwroot\typings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties typings_1json__JSONSchema="" package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+
+  
+
+</Project>

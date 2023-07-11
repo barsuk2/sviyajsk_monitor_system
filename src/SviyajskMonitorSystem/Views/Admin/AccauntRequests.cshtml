@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<AccauntRequestData>
+
+
+<table border="1">
+    <tr>
+        <th><pre>Имя</pre></th>
+        <th><pre>Фамилия</pre></th>
+        <th><pre>email</pre></th>
+        <th><pre>телефон</pre></th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.name</td>
+            <td>@item.surname</td>
+            <td>@item.email</td>
+            <td>@item.phone</td>
+           
+            <td><a asp-controller="Admin"  asp-action="Register" asp-route-id="@item.id">Зарегистрировать пользователя</a></td>
+            <td><a asp-controller="Admin" asp-action="refuse" asp-route-id="@item.id">Отказать</a></td>
+        </tr>
+
+    }
+</table>

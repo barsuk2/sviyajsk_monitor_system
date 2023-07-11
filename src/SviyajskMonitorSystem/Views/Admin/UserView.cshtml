@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<UserViewModel>
+<table border="1">
+    <tr>
+        <th><pre>email       </pre></th>
+        <th><pre>Имя      </pre></th>
+        <th><pre>Фамилия    </pre></th>
+        <th><pre>Admin      </pre></th>  
+        <th><pre>Исследователь</pre></th>
+    </tr>
+
+
+    @foreach (UserViewModel us in Model)
+    {
+        <tr>
+            <td>@us.email</td>
+            <td>@us.name</td>
+            <td>@us.surname</td>
+            @if (us.isadmin)
+            {
+            <td>Да</td>
+            }
+            else
+            {
+                <td>нет</td>
+            }
+           @if (us.isresearcher)
+           {
+            <td>Да</td>
+
+           }
+           else
+           {
+               <td>нет</td>
+
+           }
+            @if (!us.isadmin)
+            {
+            <td>
+                <a asp-action="MakeAdmin" asp-controller="Admin" asp-route-id="@us.Id">Сдделать  администратором</a>
+            </td>
+            }
+            @if (!us.isresearcher)
+            {
+                <td>
+                    <a asp-action="MakeResearcher" asp-controller="Admin" asp-route-id="@us.Id">Дать права редактирования</a>
+                </td>
+                
+
+            }
+
+
+        </tr>
+
+    }
+</table>
+

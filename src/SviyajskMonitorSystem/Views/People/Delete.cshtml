@@ -1,0 +1,34 @@
+﻿@model SviyajskMonitorSystem.Models.Person
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h3>Вы хотите удалить данный элемент?</h3>
+<div>
+    <h4>Исследователь</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Удалить</button> |
+            <a style="color:#3F51B5" asp-action="Index">Назад</a>
+        </div>
+    </form>
+</div>

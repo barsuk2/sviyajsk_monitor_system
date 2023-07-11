@@ -1,0 +1,19 @@
+﻿@page
+@{
+}
+
+
+<div id="images" class="container" >
+
+</div>
+<button onclick="ClickFile($event)" >LoadPhotos</button>
+
+<form id="photoform">
+    <input type="file" class="file_upload" id="Photo" name="Photo" multiple />
+    <button type="submit" >SendPhotos</button>
+</form>
+
+
+@section Scripts{
+<script src="~/typescript/ImagesWork.js"></script>
+    }
